@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Analytics UI</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="knockout-2.3.0.js"></script>
+    <script src="jquery.jqplot.min.js"></script>
+    <script src="excanvas.min.js"></script>
+    <script src="AnalyticsManager.js"></script>
+    <script src="jqplot.dateAxisRenderer.min.js"></script>
+    <script src="jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script src="jqplot.pointLabels.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery.jqplot.min.css" />
+    <link rel="stylesheet" type="text/css" href="AnalyticsChart.css" />
+</head>
+<body>
+    <!-- The dropdown list of units of time -->
+    <div id="analyticRunner">
+        <h1 style="color:#fff;margin:5px;">Analytics</h1>
+        <select data-bind="options: unitTimes, value: selectedTime" style="width:200px;margin:5px;"></select>
+        <button type="button" onclick="AnalyticsScriptEngine()">Run Analytics</button>
+    </div>
+    <div id="analyticsArea" data-bind="foreach: metrics">
+        <h1 data-bind="text: $data.name"></h1>
+        <h3 data-bind="text: $data.description"></h3>
+        <div data-bind="foreach: $data.parameters">
+            <span data-bind="text: $data.Name"></span>
+            <input type="text" data-bind="value: $data.Value"/>
+            <span data-bind="text: $data.Description"></span>
+            <br />
+        </div>
+        <div class="analyticsChartStyle" data-bind="attr: {id: $data.apiClassName}, jqPlotChart: $data"></div>
+    </div>
+    
+</body>
+</html>
+<script>
+    ko.applyBindings(ViewModel);
+    $(document).ready(function () {
+        AnalyticsScriptEngine();
+    });
+</script>
