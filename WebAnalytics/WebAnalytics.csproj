@@ -121,6 +121,8 @@
     <Compile Include="DataLayer\CookieParser.cs" />
     <Compile Include="DataLayer\DataEngine.cs" />
     <Compile Include="DataLayer\DataLayerAPI.cs" />
+    <Compile Include="Models\BookmarkAPI\Bookmark.cs" />
+    <Compile Include="Models\LogBookmarks\LogFileBookmark.cs" />
     <Compile Include="Models\Logs\HttpLog.cs" />
     <Compile Include="Models\Logs\LogFields.cs" />
     <Compile Include="DataLayer\LogParser.cs" />

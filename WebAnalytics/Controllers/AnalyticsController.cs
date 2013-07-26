@@ -30,12 +30,8 @@ namespace WebAnalytics.Controllers
         // Returns a JSON wrapping of the data
         public string GetAnalytics(String metrics, DateTime start, DateTime end, TimeSpan interval, string arguments)
         {
-            Trace.WriteLine(arguments);
             //convert the JSON data into dictionary
             Dictionary<string, string> parameters = JsonConvert.DeserializeObject<Dictionary<string, string>>(arguments);
-
-            //based on the metrics given, add that metric to the Analytics Engine
-           // _analytics.AddMetricFactor(() => ActivateMetrics(metrics, parameters));
             
             if (metrics != null)
             {
@@ -87,6 +83,7 @@ namespace WebAnalytics.Controllers
             Trace.WriteLine(m.MetricName);
             try
             {
+                //Send the arguments that was appended to the URI and let each metric strip the arguments of what it may need to compute its metric value.
                 m.SetParameters(args);
             }
             catch (KeyNotFoundException)

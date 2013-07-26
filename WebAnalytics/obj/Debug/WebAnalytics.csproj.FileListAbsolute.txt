@@ -30,30 +30,3 @@ c:\users\t-hawkf\documents\visual studio 2012\Projects\WebAnalytics\WebAnalytics
 c:\users\t-hawkf\documents\visual studio 2012\Projects\WebAnalytics\WebAnalytics\obj\Debug\WebAnalytics.csprojResolveAssemblyReference.cache
 c:\users\t-hawkf\documents\visual studio 2012\Projects\WebAnalytics\WebAnalytics\obj\Debug\WebAnalytics.dll
 c:\users\t-hawkf\documents\visual studio 2012\Projects\WebAnalytics\WebAnalytics\obj\Debug\WebAnalytics.pdb
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\WebAnalytics.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\WebAnalytics.pdb
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Net.Http.Formatting.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Helpers.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Http.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Http.WebHost.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Mvc.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Razor.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.WebPages.Deployment.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.WebPages.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.WebPages.Razor.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\EntityFramework.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\Microsoft.Web.Infrastructure.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\Newtonsoft.Json.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Net.Http.Formatting.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Helpers.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Http.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Http.WebHost.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Mvc.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.Razor.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.WebPages.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.WebPages.Deployment.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\bin\System.Web.WebPages.Razor.xml
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\obj\Debug\WebAnalytics.csprojResolveAssemblyReference.cache
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\obj\Debug\WebAnalytics.dll
-C:\Users\t-hawkf\Documents\GitHub\KuduAnalytic\WebAnalytics\obj\Debug\WebAnalytics.pdb

@@ -10,7 +10,6 @@ namespace WebAnalytics
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(name: "Find-All-Metrics", routeTemplate: "diagnostics/analytics/metrics", defaults: new { controller = "Analytics", action = "GetAvailableMetrics" });
-            config.Routes.MapHttpRoute(name: "Get-Chart-Information", routeTemplate: "diagnostics/analytics/{metric}/chartinfo", defaults: new { controller = "Analytics", action = "GetMetricChartInformation" });
             config.Routes.MapHttpRoute(name: "General-Analytics", routeTemplate: "diagnostics/analytics/{metrics}/{start}/{end}/{interval}/{*arguments}", defaults: new
             {
                 controller = "Analytics",

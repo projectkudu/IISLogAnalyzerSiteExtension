@@ -38,7 +38,7 @@ namespace WebAnalytics.Model.Metrics
         void PerformMetricJob(HttpLog resource);
 
         /// <summary>
-        /// After calculations are done, use this method to return the result.
+        /// After calculations are done, use this method to return the result. API controller automatically serializes the result as JSON
         /// </summary>
         /// <returns></returns>
         object GetResult();

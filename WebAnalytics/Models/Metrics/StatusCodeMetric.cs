@@ -9,13 +9,9 @@ namespace WebAnalytics.Model.Metrics
         //Key to search for within the dictionary object
         private const string STATUS_CODE_KEY = "statuscode";
         private int desiredStatusCode;
+
         public StatusCodeMetric()
         {
-        }
-
-        public StatusCodeMetric(string metricName)
-        {
-            MetricName = metricName;
         }
         private int _numStatus = 0;
         public string MetricName { get { return "Status Codes"; } set { } }
