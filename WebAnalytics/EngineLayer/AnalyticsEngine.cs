@@ -39,24 +39,24 @@ namespace WebAnalytics.EngineLayer
         public MetricResult RunAlternativeEngine(DateTime start, DateTime end, TimeSpan timeInterval)
         {
             MetricResult metricResults = new MetricResult();
-            List<W3C_Extended_Log> listLogs = new List<W3C_Extended_Log>();
             MakeNewMetricCollection();
             //Thought we are enumerating the data from the parser, the code is less complex if we have it all into a list and then perform our computations. Simple and quicker than the RunEngine method
-            foreach (W3C_Extended_Log log in dataEngine.GetLines(start, end))
-            {
-                listLogs.Add(log);
-            }
+                //now that we have all of our data in memory go ahead and perform computations on our data with our metrics
 
-            //now that we have all of our data in memory go ahead and perform computations on our data with our metrics
+
             int count = 0;
             while (start < end)
             {
                 //if we are going by the hour then add 1 Hour to starttime, by the day then add 1 day to startime, by weekly then add 7 days to starttime, by monthly
                 //and by yearly....
                 DateTime intermediateTime = start + timeInterval;
+
                 //perform metric computation on all data from [startTime, intermediateTime)
                 //afterwards clear the data that are in the metrics and compute metrics for the next set of data
-                HelperFunction(start, intermediateTime, listLogs);
+                foreach (W3C_Extended_Log log in dataEngine.GetLines(start, intermediateTime))
+                {
+                    HelperFunction(start, intermediateTime, log);
+                }
 
                 //after HelperFunction is called, the metrics for the data of timestamps [startTime, intermediateTime] should be completed, now organize the data
                 foreach (IMetric job in _metricCollection)
@@ -83,38 +83,24 @@ namespace WebAnalytics.EngineLayer
                 start = intermediateTime;
                 MakeNewMetricCollection();
                 count = 0;
+
             }
-            return metricResults;
+        return metricResults;
         }
 
-
-        private void HelperFunction(DateTime start, DateTime end)
+        /// <summary>
+        /// Used this function to perform metric computations between a start time and intermediate time
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end">The intermediate time</param>
+        /// <param name="log">HttpLog that these metrics will use to compute data</param>
+        private void HelperFunction(DateTime start, DateTime end, W3C_Extended_Log log)
         {
-            //get all the data that we need from one datetime instance to another then from there, work on the data to get it for specefic intervals
-            foreach (W3C_Extended_Log log in dataEngine.GetLines(start, end))
+            if (log.UTCLogDateTime >= start && log.UTCLogDateTime < end)
             {
-                //for each metric in the metric collection, do the computation
                 foreach (IMetric job in _metricCollection)
                 {
                     job.PerformMetricJob(log);
-                }
-            }
-        }
-
-        private void HelperFunction(DateTime start, DateTime end, List<W3C_Extended_Log> listLogs)
-        {
-            foreach (W3C_Extended_Log log in listLogs)
-            {
-                if (log.UTCLogDateTime >= start && log.UTCLogDateTime < end)
-                {
-                    foreach (IMetric job in _metricCollection)
-                    {
-                        job.PerformMetricJob(log);
-                    }
-                }
-                else
-                {
-                    continue;
                 }
             }
         }
