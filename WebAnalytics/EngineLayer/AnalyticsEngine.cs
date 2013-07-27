@@ -5,6 +5,7 @@ using System.Reflection;
 using WebAnalytics.DataLayer;
 using WebAnalytics.Model.Logs;
 using WebAnalytics.Model.Metrics;
+using WebAnalytics.Models.BookmarkAPI;
 
 namespace WebAnalytics.EngineLayer
 {
@@ -75,6 +76,7 @@ namespace WebAnalytics.EngineLayer
                         }
 
                         metricResults.Result[count].Add(job.GetResult());
+                        //count keep tracks of which List object we add the result to. Each Metric has its own List object
                         count++;
                     }
 

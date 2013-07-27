@@ -1,6 +1,16 @@
 ﻿/// <reference path="jquery-1.10.2.min.js"/>
 /// <reference path="jquery.jqplot.min.js"/>
 
+/*
+AnalyticsManager follows a sequence of steps to perform an AJAX call to the api and 
+1. We got all of the available metrics.
+2. We got a start and end datetime.
+3. Formed arguments for our AJAX call.
+4. Call the API for a result.
+5. Refresh the view models metrics array with new data
+6. Chart numerical values from the metrics
+*/
+
 
 //Use this function as a constructor for Metric objects. Using the information stored in this object
 // the apiClassName will be a direct map to the div that this metric is graphed to
@@ -17,13 +27,9 @@ function Metric(name, description, apiClassName, parameters) {
 }
 
 //create custom binding for jqplot
+//TODO make the jqplotchart smart in such a way to graph diverse graphs
 ko.bindingHandlers.jqPlotChart = {
     init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-        // This will be called when the binding is first applied to an element
-        // Set up any initial state, event handlers, etc. here
-        $(element).click(function () {
-
-        });
     },
     update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
         //get the current value property assosciated with this DOM object
@@ -157,7 +163,7 @@ function run() {
         //After the AJAX call to get all the metrics, form parameters to make another AJAX call to get computed data
         var ajaxArguments = formParametersPerMetric();
 
-        //get start and end times and the intervals we want to send to the Analytics API
+        //get start and end times and the intervals we want to send to the Analytics API from the ViewModel
         var dates = viewModelJSON.requestedDates;
         var start = dates.start;
         var end = dates.end;
@@ -165,11 +171,11 @@ function run() {
         var metricList = "";
         var i = 0, size;
 
-        //get the most up to date state of the viewmodel
+        //We added the available metrics to the ViewModel so we need to get an up to date state of the viewModel. Use ko.toJS to do that.
         viewModelJSON = ko.toJS(ViewModel);
         size = viewModelJSON.uniqueMetricNames.length;
 
-        //Part of the API call requires the class names of the metrics consumers want to see. So create a list of the class names of all the metrics the API supports
+        //Part of the API call requires the class names of the metrics defined in code. So create a list of the class names of all the metrics the API supports
         viewModelJSON.uniqueMetricNames.forEach(function (metricName) {
             metricList = metricList + metricName;
             if (i != size - 1) {
@@ -179,7 +185,6 @@ function run() {
         });
         console.info(metricList);
 
-        //Once we have all the arguments we need to make this API call, use jQuery AJAX Get to call the Analytics API and get data for each metric
         callAnalyticsAPI(metricList, start, end, interval.timeInterval, ajaxArguments, function (data) {
             console.info(data);
 
@@ -228,6 +233,7 @@ function formParametersPerMetric() {
 }
 
 //Given, an array that has array of integer and double values, form plot data that can be read by jqPlot
+//TODO make the formJQplotData smart in such a way to plot diverse graphs
 function formJqPlotData(apiResult) {
     var viewModelJSON = ko.toJS(ViewModel);
     var mapNames = [];

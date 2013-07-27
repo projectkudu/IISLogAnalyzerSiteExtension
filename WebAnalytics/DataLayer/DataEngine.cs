@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using WebAnalytics.Model.Logs;
+using WebAnalytics.Models.BookmarkAPI;
 
 namespace WebAnalytics.DataLayer
 {
@@ -24,6 +25,7 @@ namespace WebAnalytics.DataLayer
         public IEnumerable<W3C_Extended_Log> GetLines(DateTime start, DateTime end)
         {
             LogParser logParser = new LogParser();
+            LogFileBookmarkParser lfp = new LogFileBookmarkParser();
             logParser.LogFormat = W3C_ExtendedConstants.FORMAT;
             logParser.setTimes(start, end);
             //iterate through our directory of files
@@ -32,6 +34,10 @@ namespace WebAnalytics.DataLayer
             {
                 //see that its capable to read this file
                 logParser.FileName = logFile;
+
+                //parse the file and create bookmarks
+                lfp.ParseFile(logFile);
+
                 if (!logParser.IsCapable)
                 {
                     continue;
