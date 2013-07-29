@@ -21,7 +21,8 @@ namespace WebAnalytics.EngineLayer
             _metricCollection = new List<IMetric>();
             _factorMethods = new List<Func<IMetric>>();
             dataEngine = new DataEngine();
-            dataEngine.SetLogDirectory(@"C:\Users\t-hawkf\Desktop\Logs\W3SVC1");
+            //dataEngine.SetLogDirectory(@"C:\Users\t-hawkf\Desktop\Logs\W3SVC1");
+            dataEngine.SetDataEngine(@"C:\Users\hawk\Desktop\Ruslans Data_1");
         }
 
         public string LogDirectory { get; set; }

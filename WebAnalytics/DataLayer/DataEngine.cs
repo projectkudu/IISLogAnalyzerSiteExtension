@@ -10,9 +10,16 @@ namespace WebAnalytics.DataLayer
     {
         private Dictionary<string, long> _logFiles;
 
-        public void SetLogDirectory(string path)
+        /// <summary>
+        /// Set the location of the log files and create bookmarks for each of these log files.
+        /// </summary>
+        /// <param name="path">Directory that holds all the log files</param>
+        public void SetDataEngine(string path)
         {
+            
             _logFiles = LogServiceHelper.GetDirectoryFiles(path);
+            LogFileBookmarkManager bookmarkManager = new LogFileBookmarkManager();
+            bookmarkManager.RunManager(path);
         }
 
         /// <summary>
@@ -25,18 +32,16 @@ namespace WebAnalytics.DataLayer
         public IEnumerable<W3C_Extended_Log> GetLines(DateTime start, DateTime end)
         {
             LogParser logParser = new LogParser();
-            LogFileBookmarkParser lfp = new LogFileBookmarkParser();
             logParser.LogFormat = W3C_ExtendedConstants.FORMAT;
             logParser.setTimes(start, end);
             //iterate through our directory of files
-            //Trace.WriteLine(start.ToString());
             foreach (string logFile in _logFiles.Keys)
             {
                 //see that its capable to read this file
                 logParser.FileName = logFile;
 
-                //parse the file and create bookmarks
-                lfp.ParseFile(logFile);
+
+                //once the bookmarks are created for all our files
 
                 if (!logParser.IsCapable)
                 {

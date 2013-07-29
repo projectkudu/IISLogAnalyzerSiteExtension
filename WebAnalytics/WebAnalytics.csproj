@@ -122,7 +122,8 @@
     <Compile Include="DataLayer\DataEngine.cs" />
     <Compile Include="DataLayer\DataLayerAPI.cs" />
     <Compile Include="Models\BookmarkAPI\Bookmark.cs" />
-    <Compile Include="Models\BookmarkAPI\LogFileBookmarkParser.cs" />
+    <Compile Include="Models\BookmarkAPI\BookmarkManager.cs" />
+    <Compile Include="Models\BookmarkAPI\LogFileBookmarkManager.cs" />
     <Compile Include="Models\LogBookmarks\LogFileBookmark.cs" />
     <Compile Include="Models\Logs\HttpLog.cs" />
     <Compile Include="Models\Logs\LogFields.cs" />
