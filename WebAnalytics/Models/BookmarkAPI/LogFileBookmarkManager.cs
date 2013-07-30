@@ -14,13 +14,15 @@ namespace WebAnalytics.Models.BookmarkAPI
     {
         //keep track of the bookmarks
         private HashSet<LogFileBookmark> _bookmarkCollection;
-        private const string _CACHE_FILE = "bookmarks.txt";
+        //file where we have all the log files bookmarks cached
+        private string _CACHE_FILE = HttpRuntime.AppDomainAppPath + "bookmarks.txt";
+
         private Dictionary<string, long> _logFiles;
 
         public void RunManager(string logPathDirectory)
         {
             _logFiles = LogServiceHelper.GetDirectoryFiles(logPathDirectory);
-
+            _bookmarkCollection = new HashSet<LogFileBookmark>();
             //check to see if the cache file for bookmarks exist
             if (File.Exists(_CACHE_FILE))
             {
@@ -30,15 +32,18 @@ namespace WebAnalytics.Models.BookmarkAPI
             }
             else
             {
-                Trace.WriteLine(Environment.CurrentDirectory);
-                //create the cache file and simply start parsing 
-                File.Create(_CACHE_FILE);
                 foreach (string logFilePath in _logFiles.Keys)
                 {
                     ParseFile(logFilePath, 0);
                 }
 
                 //Cache the bookmarks made when parsing the file
+                StreamWriter sw = new StreamWriter(_CACHE_FILE);
+                foreach (LogFileBookmark bookmark in _bookmarkCollection)
+                {
+                    sw.WriteLine(bookmark.BookmarkDescription);
+                }
+                sw.Flush();
             }
         }
 
@@ -57,8 +62,7 @@ namespace WebAnalytics.Models.BookmarkAPI
 
         //Given the 
         private void ParseFile(string fileName, long seekPosition)
-        {
-            _bookmarkCollection = new HashSet<LogFileBookmark>();
+        {  
             DateTime lastDate = DateTime.MinValue;
             DateTime temp = new DateTime();
             LogFileBookmark bookmark;
@@ -120,12 +124,6 @@ namespace WebAnalytics.Models.BookmarkAPI
                     }
                     sb.Remove(0, line.Length);
                 }
-            }
-
-            //iterate through the bookmarkCollection and show all the hour logs
-            foreach (LogFileBookmark bookmarkS in _bookmarkCollection)
-            {
-                Trace.WriteLine(bookmarkS.StartDateTime);
             }
         }
 

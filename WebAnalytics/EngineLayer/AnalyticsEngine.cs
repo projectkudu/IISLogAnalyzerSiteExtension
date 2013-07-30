@@ -21,8 +21,7 @@ namespace WebAnalytics.EngineLayer
             _metricCollection = new List<IMetric>();
             _factorMethods = new List<Func<IMetric>>();
             dataEngine = new DataEngine();
-            //dataEngine.SetLogDirectory(@"C:\Users\t-hawkf\Desktop\Logs\W3SVC1");
-            dataEngine.SetDataEngine(@"C:\Users\hawk\Desktop\Ruslans Data_1");
+            //dataEngine.SetDataEngine(@"C:\Users\hawk\Desktop\Ruslans Data_1");
         }
 
         public string LogDirectory { get; set; }
@@ -40,6 +39,7 @@ namespace WebAnalytics.EngineLayer
 
         public MetricResult RunAlternativeEngine(DateTime start, DateTime end, TimeSpan timeInterval)
         {
+            dataEngine.SetDataEngine(@"C:\Users\t-hawkf\Desktop\Logs\W3SVC1");
             MetricResult metricResults = new MetricResult();
             MakeNewMetricCollection();
             //Thought we are enumerating the data from the parser, the code is less complex if we have it all into a list and then perform our computations. Simple and quicker than the RunEngine method

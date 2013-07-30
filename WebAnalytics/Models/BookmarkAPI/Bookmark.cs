@@ -8,5 +8,6 @@ namespace WebAnalytics.Models.BookmarkAPI
     public interface Bookmark
     {
         object Mark { get; }
+        string BookmarkDescription { get; }
     }
 }

@@ -30,6 +30,7 @@ namespace WebAnalytics.Controllers
         // Returns a JSON wrapping of the data
         public string GetAnalytics(String metrics, DateTime start, DateTime end, TimeSpan interval, string arguments)
         {
+            Trace.WriteLine(end.ToString());
             //convert the JSON data into dictionary
             Dictionary<string, string> parameters = JsonConvert.DeserializeObject<Dictionary<string, string>>(arguments);
             

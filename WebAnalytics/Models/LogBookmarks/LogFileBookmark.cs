@@ -8,6 +8,7 @@ namespace WebAnalytics.Models.LogBookmarks
 {
     public class LogFileBookmark:Bookmark
     {
+        private string format = "yyyy-MM-dd HH:mm:ss";
         public string FilePath { get; set; }
         public DateTime StartDateTime { get; set; }
         public long Location { get; set; }
@@ -18,9 +19,6 @@ namespace WebAnalytics.Models.LogBookmarks
             get { throw new NotImplementedException(); }
         }
 
-        public override string ToString()
-        {
-            return StartDateTime.ToString() + " " + FilePath + " " + Convert.ToString(Location);
-        }
+        public string BookmarkDescription { get { return StartDateTime.ToString(format) + " " + FilePath + " " + Convert.ToString(Location); } }
     }
 }

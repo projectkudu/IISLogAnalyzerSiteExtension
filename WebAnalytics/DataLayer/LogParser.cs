@@ -92,7 +92,6 @@ namespace WebAnalytics.DataLayer
                             switch (_fields[i].ToLower())
                             {
                                 case W3C_ExtendedConstants.DATE:
-                                    //TODO assume time is in UTC
                                     _log.Date = DateTime.Parse(data[i]);
                                     break;
                                 case W3C_ExtendedConstants.TIME:
