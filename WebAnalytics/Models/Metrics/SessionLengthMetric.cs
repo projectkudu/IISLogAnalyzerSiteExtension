@@ -21,8 +21,8 @@ namespace WebAnalytics.Model.Metrics
             Dictionary<string, string> cookies = resource.Cookies;
             if (cookies != null)
             {
-                string sessionID = "";        
-                if (cookies.TryGetValue(CookieParser.D4DAD, out sessionID))
+                string sessionID = "";
+                if (cookies.TryGetValue(CookieParser.WA_WEBSITE_SID, out sessionID))
                 {
                     Organize(sessionID, resource.UTCLogDateTime);
                 }

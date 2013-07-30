@@ -30,7 +30,6 @@ namespace WebAnalytics.Controllers
         // Returns a JSON wrapping of the data
         public string GetAnalytics(String metrics, DateTime start, DateTime end, TimeSpan interval, string arguments)
         {
-            Trace.WriteLine(end.ToString());
             //convert the JSON data into dictionary
             Dictionary<string, string> parameters = JsonConvert.DeserializeObject<Dictionary<string, string>>(arguments);
             
@@ -70,18 +69,15 @@ namespace WebAnalytics.Controllers
             ObjectHandle handle;
             try
             {
-                Trace.WriteLine(typeof(IMetric).Assembly.ToString());
                 handle = Activator.CreateInstance(typeof(IMetric).Assembly.FullName, "WebAnalytics.Model.Metrics." + metric);
             }
             catch (Exception e)
             {
-                Trace.WriteLine(e);
                 return null;
             }
             
             //return the wrapped object
             IMetric m = (IMetric)handle.Unwrap();
-            Trace.WriteLine(m.MetricName);
             try
             {
                 //Send the arguments that was appended to the URI and let each metric strip the arguments of what it may need to compute its metric value.

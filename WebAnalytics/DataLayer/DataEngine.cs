@@ -18,8 +18,8 @@ namespace WebAnalytics.DataLayer
         {
             
             _logFiles = LogServiceHelper.GetDirectoryFiles(path);
-            LogFileBookmarkManager bookmarkManager = new LogFileBookmarkManager();
-            bookmarkManager.RunManager(path);
+            //LogFileBookmarkManager bookmarkManager = new LogFileBookmarkManager();
+            //bookmarkManager.RunManager(path);
         }
 
         /// <summary>

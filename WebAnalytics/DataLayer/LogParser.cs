@@ -96,7 +96,6 @@ namespace WebAnalytics.DataLayer
                                     break;
                                 case W3C_ExtendedConstants.TIME:
                                     _log.Time = DateTime.Parse(data[i]);
-                                    Trace.WriteLine("Time " + _log.Time.ToLongTimeString());
                                     break;
                                 case W3C_ExtendedConstants.TIME_TAKEN:
                                     _log.TimeTaken = Convert.ToInt32(data[i]);
@@ -141,6 +140,7 @@ namespace WebAnalytics.DataLayer
                                     //nothing
                                     break;
                                 case W3C_ExtendedConstants.STATUS:
+
                                     _log.StatusCode = Convert.ToInt16(data[i]);
                                     break;
                                 case W3C_ExtendedConstants.WIN32_STATUS:
@@ -194,7 +194,7 @@ namespace WebAnalytics.DataLayer
                     //we had earlier the time and date of a log as seperate instances of the date time object, to make querying of logs simple, merged the date and time
                     //into a single instance of DateTime.
                     _log.UTCLogDateTime = DateTime.Parse(date + " " + time);
-                    Trace.WriteLine(_log.UTCLogDateTime.ToString());
+                    //Trace.WriteLine(_log.UTCLogDateTime.ToString());
                     yield return _log;
                 }
 
