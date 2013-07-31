@@ -12,9 +12,9 @@ namespace WebAnalytics.Model.Metrics
         }
         public string MetricName { get { return "Average Time Taken"; } set { } }
 
-        public void PerformMetricJob(HttpLog resource)
+        public void ProcessEntry(HttpLogEntry entry)
         {
-            total += resource.TimeTaken;
+            total += entry.TimeTaken;
             count++;
         }
 

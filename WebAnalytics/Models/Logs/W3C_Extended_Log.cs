@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace WebAnalytics.Model.Logs
 {
 
-    public sealed class W3C_Extended_Log : HttpLog, IComparable
+    public sealed class W3C_Extended_Log : HttpLogEntry, IComparable
     {
 
         /// <summary>

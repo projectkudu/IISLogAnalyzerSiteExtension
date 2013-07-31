@@ -16,10 +16,10 @@ namespace WebAnalytics.Model.Metrics
         private int _numStatus = 0;
         public string MetricName { get { return "Status Codes"; } set { } }
 
-        public void PerformMetricJob(HttpLog resource)
+        public void ProcessEntry(HttpLogEntry entry)
         {
             //check the status code of the log
-            if (resource.StatusCode == desiredStatusCode)
+            if (entry.StatusCode == desiredStatusCode)
             {
                 _numStatus++;
             }

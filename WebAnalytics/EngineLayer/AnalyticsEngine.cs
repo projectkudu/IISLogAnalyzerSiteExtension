@@ -103,7 +103,7 @@ namespace WebAnalytics.EngineLayer
             {
                 foreach (IMetric job in _metricCollection)
                 {
-                    job.PerformMetricJob(log);
+                    job.ProcessEntry(log);
                 }
             }
         }

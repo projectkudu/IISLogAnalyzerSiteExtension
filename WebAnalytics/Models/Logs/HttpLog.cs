@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebAnalytics.Model.Logs
 {
-    public abstract class HttpLog
+    public abstract class HttpLogEntry
     {
         /// <summary>
         /// All logs have some type of date information, extend this class to have your own format of how the date may be formatted

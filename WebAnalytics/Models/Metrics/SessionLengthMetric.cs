@@ -16,15 +16,16 @@ namespace WebAnalytics.Model.Metrics
         public string MetricName { get { return "Session Length"; } set { } }
 
         //In this method we will peform computations to find session lengths
-        public void PerformMetricJob(HttpLog resource)
+        public void ProcessEntry(HttpLogEntry entry)
         {
-            Dictionary<string, string> cookies = resource.Cookies;
+            Dictionary<string, string> cookies = entry.Cookies;
             if (cookies != null)
             {
                 string sessionID = "";
                 if (cookies.TryGetValue(CookieParser.WA_WEBSITE_SID, out sessionID))
                 {
-                    Organize(sessionID, resource.UTCLogDateTime);
+                   
+                    Organize(sessionID, entry.UTCLogDateTime);
                 }
             }
         }
@@ -58,9 +59,13 @@ namespace WebAnalytics.Model.Metrics
                 interval.endTime = interval.startTime;
                 _sessionLengths.Add(arg, interval);
             }
-            else //if its already in the unique dictionary, then this must be the second or more'th time to read this session id
+            else
             {
-                _sessionLengths[arg].endTime = time;
+                //if its already in the unique dictionary, then this must be the second, third, etc time that we've read an end time
+                if (time > _sessionLengths[arg].endTime)
+                {
+                    _sessionLengths[arg].endTime = time;
+                }
             }
         }
 
@@ -68,6 +73,7 @@ namespace WebAnalytics.Model.Metrics
         {
             TimeSpan difference;
             double total = 0;
+            //for each session id calculate the difference in their start and end time
             foreach(KeyValuePair<string, Interval> pair in _sessionLengths)
             {
                 difference = pair.Value.endTime - pair.Value.startTime;

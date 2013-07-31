@@ -23,17 +23,17 @@ namespace WebAnalytics.Model.Metrics
         /// At the api controller level, time is already considered, now with the filtered logs dependent on the time the user specefied, perform the metric jobs
         /// for these log entries
         /// </summary>
-        /// <param name="resource"></param>
+        /// <param name="entry"></param>
         /// 
-        public void PerformMetricJob(HttpLog resource)
+        public void ProcessEntry(HttpLogEntry entry)
         {
-            if (resource.Cookies == null || resource.Cookies.Count == 0)
+            if (entry.Cookies == null || entry.Cookies.Count == 0)
             {
                 return;
             }
             //http://localhost:12553/diagnostics/analytics/getsessioncount?startTime=06/19/2013&endTime=06/20/2013&timeInterval=1:00
             //be sure to check if the cookies are empty. Some log files may not have cookies
-            Dictionary<string,string> cookies = resource.Cookies;
+            Dictionary<string,string> cookies = entry.Cookies;
             if (cookies != null)
             {
                 string sessionID = "";

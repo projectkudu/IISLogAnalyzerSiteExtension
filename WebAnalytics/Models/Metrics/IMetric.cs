@@ -34,8 +34,8 @@ namespace WebAnalytics.Model.Metrics
         /// <summary>
         /// Depending on the metric and how a class derives this method, perform the computations to get the metric information
         /// </summary>
-        /// <param name="resource">The Analytics Engine will pass a child class of HttpLog, using this class, strip the fields that are need</param>
-        void PerformMetricJob(HttpLog resource);
+        /// <param name="resource">The Analytics Engine will pass a child class of HttpLogEntry, using this class, strip the fields that are need</param>
+        void ProcessEntry(HttpLogEntry entry);
 
         /// <summary>
         /// After calculations are done, use this method to return the result. API controller automatically serializes the result as JSON
