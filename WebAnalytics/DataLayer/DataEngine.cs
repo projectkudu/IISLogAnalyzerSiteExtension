@@ -17,7 +17,9 @@ namespace WebAnalytics.DataLayer
         public void SetDataEngine(string path)
         {
             
-            _logFiles = LogServiceHelper.GetDirectoryFiles(path);
+            
+            AzureEnvironment e = new AzureEnvironment();
+            _logFiles = LogServiceHelper.GetDirectoryFiles(e.LogFiles);
             //LogFileBookmarkManager bookmarkManager = new LogFileBookmarkManager();
             //bookmarkManager.RunManager(path);
         }
