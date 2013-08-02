@@ -120,8 +120,8 @@ ViewModel.requestedIntervals = ko.computed(function () {
 var plot
 var resources = {
     //api url for calling the api to retrieve all the metrics and their description
-    getMetricsURL: "diagnostics/analytics/metrics",
-    getParametersURL: "diagnostics/analytics/{metric}/parameters",
+    getMetricsURL: "~/diagnostics/analytics/metrics",
+    getParametersURL: "~/diagnostics/analytics/{metric}/parameters",
     metricInformation: new Array(),
     metricUniqueNames: new Array()
 };
@@ -140,7 +140,7 @@ function run() {
     var viewModelJSON = ko.toJS(ViewModel);
 
     //Get all the supported metrics and their information such as description of metric, parameters, and default value for parameters
-    $.getJSON(viewModelJSON.getMetricsURL, function (data) {
+    $.getJSON("http://" + location.host + "/Analytics/" + viewModelJSON.getMetricsURL, function (data) {
         //the data already comes in as JSON. Api controllers in webapi automatically serializes returned data as JSON.
         var count = 0;
         var name, description, parameters, className;
@@ -204,7 +204,7 @@ function run() {
 
 //Make an AJAX call to the API and get plot information for each metric
 function callAnalyticsAPI(metricList, startTime, endTime, intervalTime, metricArguments, parentCallBack) {
-    var apiURL = "diagnostics/analytics";
+    var apiURL = "http://" + location.host + "/Analytics/" + "diagnostics/analytics";
     var result;
     $.get(apiURL, { metrics: metricList, start: startTime, end: endTime, interval: intervalTime, arguments: metricArguments },
         function callback(data, textStatus) {
