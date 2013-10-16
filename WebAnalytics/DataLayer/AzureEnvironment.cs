@@ -14,7 +14,7 @@ namespace WebAnalytics.DataLayer
         private string _root;
         private string _logFilesPath;
         private string _rawLogsPath;
-        private const string UserSite = "/_app";
+        private const string UserSite = "/analytics/_app";
         public AzureEnvironment()
         {
             _siteRootPath = HostingEnvironment.MapPath(UserSite);

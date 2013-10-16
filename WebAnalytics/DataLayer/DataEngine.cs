@@ -33,12 +33,13 @@ namespace WebAnalytics.DataLayer
         /// <returns>Lines of DeSerialized logs in a given time interval</returns>
         public IEnumerable<W3C_Extended_Log> GetLines(DateTime start, DateTime end)
         {
-            LogParser logParser = new LogParser();
-            logParser.LogFormat = W3C_ExtendedConstants.FORMAT;
-            logParser.setTimes(start, end);
             //iterate through our directory of files
             foreach (string logFile in _logFiles.Keys)
             {
+                LogParser logParser = new LogParser();
+                logParser.LogFormat = W3C_ExtendedConstants.FORMAT;
+                logParser.setTimes(start, end);
+
                 //see that its capable to read this file
                 logParser.FileName = logFile;
 

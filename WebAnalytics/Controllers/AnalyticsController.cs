@@ -32,15 +32,15 @@ namespace WebAnalytics.Controllers
         {
             //convert the JSON data into dictionary
             Dictionary<string, string> parameters = JsonConvert.DeserializeObject<Dictionary<string, string>>(arguments);
-            
+
             if (metrics != null)
             {
                 string[] requestedMetrics = metrics.Split(',');
 
                 foreach (string requestedMetric in requestedMetrics)
                 {
-                    _analytics.AddMetricFactor(() => ActivateMetrics(requestedMetric,parameters));
-            
+                    _analytics.AddMetricFactor(() => ActivateMetrics(requestedMetric, parameters));
+
                 }
             }
 
@@ -71,7 +71,7 @@ namespace WebAnalytics.Controllers
             {
                 handle = Activator.CreateInstance(typeof(IMetric).Assembly.FullName, "WebAnalytics.Model.Metrics." + metric);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
