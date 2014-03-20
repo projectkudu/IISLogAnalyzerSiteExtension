@@ -1,0 +1,4 @@
+2013-06-27 00:00:20 C:\Users\t-hawkf\Desktop\Logs\W3SVC1\ruslan.txt 0
+2013-06-27 01:00:16 C:\Users\t-hawkf\Desktop\Logs\W3SVC1\ruslan.txt 228341
+2013-06-26 22:00:11 C:\Users\t-hawkf\Desktop\Logs\W3SVC1\WW-RuslanY.log 207
+2013-06-26 23:00:17 C:\Users\t-hawkf\Desktop\Logs\W3SVC1\WW-RuslanY.log 223283
