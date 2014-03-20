@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>iisloganalyzer</id>
+    <title>IIS log file analyzer</title>
+    <version>0.5.0</version>
+    <authors>Hawk Foreste,David Ebbo</authors>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/projectkudu/IISLogAnalyzerSiteExtension</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Site Extension that analyzes the IIS logs in an Azure Web Site</description>
+    <tags>iis log analyzer</tags>
+  </metadata>
+  <files>
+    <file src="artifacts\Release\SiteExtensions\iisloganalyzer\**\*.*" target="content" />
+  </files>
+</package>

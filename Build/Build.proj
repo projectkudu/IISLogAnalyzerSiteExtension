@@ -5,7 +5,7 @@
         <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
         <ProjectRoot>$(MSBuildProjectDirectory)\..</ProjectRoot>
         <ArtifactsPath>$(ProjectRoot)\artifacts\$(Configuration)</ArtifactsPath>
-        <ServiceSiteTargetPath Condition="$(ServiceSiteTargetPath) == ''">$(ArtifactsPath)\SiteExtensions\analytics</ServiceSiteTargetPath>
+        <ServiceSiteTargetPath Condition="$(ServiceSiteTargetPath) == ''">$(ArtifactsPath)\SiteExtensions\iisloganalyzer</ServiceSiteTargetPath>
         <ServiceSiteProject>$(ProjectRoot)\WebAnalytics\WebAnalytics.csproj</ServiceSiteProject>
     </PropertyGroup>
 
