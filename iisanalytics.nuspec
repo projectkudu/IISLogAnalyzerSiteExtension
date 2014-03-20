@@ -3,7 +3,7 @@
   <metadata>
     <id>iisloganalyzer</id>
     <title>IIS log file analyzer</title>
-    <version>0.5.0</version>
+    <version>0.5.1</version>
     <authors>Hawk Foreste,David Ebbo</authors>
     <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
     <projectUrl>https://github.com/projectkudu/IISLogAnalyzerSiteExtension</projectUrl>

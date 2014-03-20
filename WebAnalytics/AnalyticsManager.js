@@ -140,7 +140,7 @@ function run() {
     var viewModelJSON = ko.toJS(ViewModel);
 
     //Get all the supported metrics and their information such as description of metric, parameters, and default value for parameters
-    $.getJSON("Analytics/" + viewModelJSON.getMetricsURL, function (data) {
+    $.getJSON("iisloganalyzer/" + viewModelJSON.getMetricsURL, function (data) {
         //the data already comes in as JSON. Api controllers in webapi automatically serializes returned data as JSON.
         var count = 0;
         var name, description, parameters, className;
@@ -204,7 +204,7 @@ function run() {
 
 //Make an AJAX call to the API and get plot information for each metric
 function callAnalyticsAPI(metricList, startTime, endTime, intervalTime, metricArguments, parentCallBack) {
-    var apiURL = "Analytics/" + "diagnostics/analytics";
+    var apiURL = "iisloganalyzer/" + "diagnostics/analytics";
     var result;
     $.get(apiURL, { metrics: metricList, start: startTime, end: endTime, interval: intervalTime, arguments: metricArguments },
         function callback(data, textStatus) {
